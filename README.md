@@ -24,29 +24,6 @@ SportsSquadJavaCLI/
 └── README.md
 ```
 
-## Compile
-
-Use Maven to compile the application and tests:
-
-```bash
-mvn test
-```
-
-## Run
-
-After compiling:
-
-```bash
-mvn -q -DskipTests package
-java -cp target/classes Main
-```
-
-## Test
-
-```bash
-mvn test
-```
-
 ## Baseline
 
 ```text

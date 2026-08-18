@@ -100,3 +100,17 @@
 ### Verification
 - Verified compilation succeeds targeting Java 21 compatibility.
 - Interactive scanner accepts exactly 9 inputs without hanging, and rejects selection overflow inputs (like 11 values) successfully.
+
+## 2026-08-18 - Configurable cohort selection limits
+
+### Change
+- Made Year 2 and Year 3 cohort selection limits independently configurable instead of sharing a single hardcoded limit.
+
+### Implementation
+- Modified `src/model/SquadRules.java` to replace `maximumCohortSize` with `maximumYear2CohortSize` and `maximumYear3CohortSize`, updating the constructor and adding corresponding getters.
+- Updated `src/validator/SquadValidator.java` to check Year 2 and Year 3 counts against their respective custom limits.
+- Updated `src/Main.java` and `test/validator/SquadValidatorTest.java` to use the updated `SquadRules` constructor and validation checks.
+
+### Verification
+- Verified compilation succeeds targeting Java 21 (`--release 21`).
+- Confirmed that tests and CLI can run with distinct limit constraints for each cohort.

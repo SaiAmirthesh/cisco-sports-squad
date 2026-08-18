@@ -5,18 +5,21 @@ public class SquadRules {
     private final int requiredGoalkeepers;
     private final int minimumDefenders;
     private final int minimumForwards;
-    private final int maximumCohortSize;
+    private final int maximumYear2CohortSize;
+    private final int maximumYear3CohortSize;
 
     public SquadRules(int requiredSquadSize,
                       int requiredGoalkeepers,
                       int minimumDefenders,
                       int minimumForwards,
-                      int maximumCohortSize) {
+                      int maximumYear2CohortSize,
+                      int maximumYear3CohortSize) {
         this.requiredSquadSize = requiredSquadSize;
         this.requiredGoalkeepers = requiredGoalkeepers;
         this.minimumDefenders = minimumDefenders;
         this.minimumForwards = minimumForwards;
-        this.maximumCohortSize = maximumCohortSize;
+        this.maximumYear2CohortSize = maximumYear2CohortSize;
+        this.maximumYear3CohortSize = maximumYear3CohortSize;
     }
 
     public int getRequiredSquadSize() {
@@ -35,7 +38,11 @@ public class SquadRules {
         return minimumForwards;
     }
 
-    public int getMaximumCohortSize() {
-        return maximumCohortSize;
+    public int getMaximumYear2CohortSize() {
+        return maximumYear2CohortSize;
+    }
+
+    public int getMaximumYear3CohortSize() {
+        return maximumYear3CohortSize;
     }
 }

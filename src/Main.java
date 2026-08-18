@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Main {
 
-    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4);
+    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4, 4);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -127,8 +127,8 @@ public class Main {
 
         System.out.println(
                 ruleState(
-                        stats.getYear2Count() <= RULES.getMaximumCohortSize()
-                                && stats.getYear3Count() <= RULES.getMaximumCohortSize(),
+                        stats.getYear2Count() <= RULES.getMaximumYear2CohortSize()
+                                && stats.getYear3Count() <= RULES.getMaximumYear3CohortSize(),
                         "Cohort limits"
                 )
         );

@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SquadValidatorTest {
 
-    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4);
+    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4, 4);
 
     private final SquadValidator validator = new SquadValidator();
 
@@ -220,21 +220,21 @@ class SquadValidatorTest {
             violations.add("PLAYER_UNAVAILABLE: " + playerId);
         }
 
-        if (year2 > RULES.getMaximumCohortSize()) {
+        if (year2 > RULES.getMaximumYear2CohortSize()) {
             violations.add(
                     "COHORT_LIMIT_EXCEEDED: YEAR_2 has "
                             + year2
                             + ", maximum "
-                            + RULES.getMaximumCohortSize()
+                            + RULES.getMaximumYear2CohortSize()
             );
         }
 
-        if (year3 > RULES.getMaximumCohortSize()) {
+        if (year3 > RULES.getMaximumYear3CohortSize()) {
             violations.add(
                     "COHORT_LIMIT_EXCEEDED: YEAR_3 has "
                             + year3
                             + ", maximum "
-                            + RULES.getMaximumCohortSize()
+                            + RULES.getMaximumYear3CohortSize()
             );
         }
 
