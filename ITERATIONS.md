@@ -57,3 +57,46 @@
 ### Verification
 - The project now has a declared JUnit dependency and explicit source directories.
 - The README matches the configured build layout.
+
+## 2026-08-18 - Reject selection overflow
+
+### Change
+- Changed selection parsing so inputs with more than 9 values are rejected instead of being partially accepted.
+
+### Implementation
+- Extracted selection parsing into `src/input/SelectionReader.java`.
+- Kept the fixed 9-value read, then checked for any leftover tokens and rejected them with a clear exception.
+- Added JUnit coverage for exact-nine input and overflow input in `test/input/SelectionReaderTest.java`.
+
+### Verification
+- Exact nine-value selections still parse correctly.
+- A tenth value now triggers rejection instead of being ignored.
+
+## 2026-08-18 - Revert to validation-only input flow
+
+### Change
+- Restored the original 9-value selection flow and removed extra input-layer rejection.
+
+### Implementation
+- Simplified `src/input/SelectionReader.java` back to the original read-9-values behavior.
+- Removed the CLI input-error wrapper from `src/Main.java`.
+- Deleted the input-reader JUnit test that depended on the stricter parsing contract.
+
+### Verification
+- A valid 9-value selection is accepted again.
+- Validation remains the only decision layer after selection is read.
+
+## 2026-08-18 - Non-blocking input validation and length enforcement
+
+### Change
+- Resolved blocking input behavior on interactive console streams and properly enforced selection length constraints (exactly 9 values).
+
+### Implementation
+- Updated `src/input/SelectionReader.java` to read the entire console input line first using `scanner.nextLine()`.
+- Created an isolated `Scanner` specifically for the read line to prevent interactive `hasNext()` calls from blocking.
+- Validated that the line contains exactly the expected number of binary inputs (9), throwing clear exceptions if there are fewer or more values (e.g. `1 1 1 1 1 1 1 0 0 1 0`).
+- Re-compiled classes with the `--release 21` flag to prevent `UnsupportedClassVersionError` when running on a Java 21 runtime.
+
+### Verification
+- Verified compilation succeeds targeting Java 21 compatibility.
+- Interactive scanner accepts exactly 9 inputs without hanging, and rejects selection overflow inputs (like 11 values) successfully.

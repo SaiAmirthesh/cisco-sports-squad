@@ -1,4 +1,5 @@
 import data.Roster;
+import input.SelectionReader;
 import model.Player;
 import model.SquadRules;
 import model.SquadStats;
@@ -9,8 +10,7 @@ import java.util.*;
 
 public class Main {
 
-    private static final SquadRules RULES =
-            new SquadRules(7, 1, 2, 2, 4);
+    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -33,19 +33,7 @@ public class Main {
         System.out.println("Example: 1 1 1 1 1 1 1 0 0");
         System.out.print("> ");
 
-        int[] selection = new int[Roster.PLAYERS.length];
-
-        for (int i = 0; i < selection.length; i++) {
-            if (!scanner.hasNextInt()) {
-                throw new IllegalArgumentException(
-                        "Please enter exactly 9 integer values."
-                );
-            }
-
-            selection[i] = scanner.nextInt();
-        }
-
-        return selection;
+        return SelectionReader.readSelection(scanner, Roster.PLAYERS.length);
     }
 
     private static void printRoster(Player[] roster) {
