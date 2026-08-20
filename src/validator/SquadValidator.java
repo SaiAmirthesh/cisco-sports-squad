@@ -69,13 +69,13 @@ public class SquadValidator {
         }
 
         // 6. Cohort limits — required YEAR_2 then YEAR_3 order
-        if (stats.getYear2Count() > rules.getMaximumYear2CohortSize()) {
+        if (stats.getYear2Count() != rules.getMaximumYear2CohortSize()) {
             violations.add(
                     "COHORT_LIMIT_EXCEEDED: YEAR_2 has " + stats.getYear2Count() + ", maximum " + rules.getMaximumYear2CohortSize()
             );
         }
 
-        if (stats.getYear3Count() > rules.getMaximumYear3CohortSize()) {
+        if (stats.getYear3Count() != rules.getMaximumYear3CohortSize()) {
             violations.add(
                     "COHORT_LIMIT_EXCEEDED: YEAR_3 has " + stats.getYear3Count() + ", maximum " + rules.getMaximumYear3CohortSize()
             );

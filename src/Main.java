@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Main {
 
-    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4, 4);
+    private static final SquadRules RULES = new SquadRules(7, 1, 2, 2, 4, 3);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
